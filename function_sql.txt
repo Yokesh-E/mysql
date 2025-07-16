@@ -1,0 +1,70 @@
+# functions
+
+/*Aggregate func      Datetime func      String func    Numeric func
+     |                     |                 |                |
+   min()             current_date()       length()         abs()
+   max()               curdate()          concatc()       floor()
+   count()           current_time()        upper()        ceil()
+   avg()              curtime()            lower()        sqrt()
+   sum()              sysdate()            instr()         pow()
+                      now()                substr()        mod()
+                      month()               trim()         round()
+                      year()               reverse()      greatest()
+                      day()                                least()
+                                                           truncate() */
+ 
+ # String func()
+ 
+ select * from employee;   
+ select	upper(emp_name) from employee;
+ select lower(emp_name) from employee;
+ select emp_name,length(emp_name) from employee;
+ select emp_name,instr(emp_name,"a") from employee;
+ select emp_name; 
+ 
+ # Numeric func
+ 
+ select abs(-1);
+ select abs(1);
+ select sqrt(144);
+ select pow(2,4);
+ select mod(15,4); # this is show reminder values
+ select round(6.40);
+ select round(6.70);
+ select round(6.78960,3);
+ select truncate(6.70895,3);
+# select emp_name,greatest(salary) from employee;
+select greatest(2,500,200,2300,12,1);
+select least(2,-300,-250,-500,2000);
+select floor(salary) from employee;
+select floor(6.7);
+select ceil(6.7); 
+
+# Datetime func
+
+Select current_date;
+select curdate();
+select current_time;
+select curtime();
+select now();
+select sysdate();
+select year("2025-07-18");
+select month("2025-07-18");
+select monthname("2025-07-18");
+select day("2025-07-18");
+select dayname("2025-07-18");
+select hour("12:20:10");
+select minute("12:20:10");
+select second("12:20:10");
+select sec_to_time("23:20:10");
+ 
+ # Aggregete func
+ 
+ select * from employee;
+ select emp_name,sum(salary) from employee
+ group by emp_name
+ having emp_name = "Taha"; 
+ 
+ select emp_name,max(salary) from employee
+ group by emp_name
+ having emp_name = "Taha";

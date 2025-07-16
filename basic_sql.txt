@@ -1,0 +1,42 @@
+CREATE database Tahaveel;
+use Tahaveel;
+show databases;
+CREATE table student(student_name varchar(20),joining_date date,ph_no int,city varchar(10));
+
+select * from student;
+
+insert into student values ("Tahaveel","2025-07-03","948865761","Chennai");
+insert into student (student_name,joining_date,ph_no,city,course) values("Taha","2025-07-03","124567890","Chennai","Python"),
+("Rohit","2025-07-03","123456890","Theni","python"),
+("Logan","2025-07-03","123457890","Thircy","python"),
+("Ram","2025-07-03","123456890","Toothukodi","python"),
+("Zuhar","2025-07-03","098654321","Chennai","python"),
+("Shamy","2025-07-03","097654321","Chennai","python"),
+("Yokesh","2025-07-03","987654321","Chennai","python"),
+("Karan","2025-07-03","0876543221","chennai","python"),
+("Fuzail","2025-07-03","987654321","Chennai","python"); 
+
+drop table student;
+
+truncate table student;
+
+alter table student modify ph_no int;
+alter table student add column course varchar(20);
+
+use Tahaveel;
+drop table employee;
+create table employee(emp_no int,emp_name varchar(20),hire_date date,ph_no bigint,salary decimal(7,2));
+
+select * from  employee; 
+drop table employee;
+insert into employee(emp_no,emp_name,hire_date,ph_no,salary) values
+("1","Taha","2024-01-10",9488657861,30000.00),
+("2","Taha","2024-02-10",9488123861,35000.00),
+("3","Taha","2024-03-10",94123657861,29000.50),
+("4","Rohit","2024-04-10",9478657861,31000.00),
+("5","Ram","2024-05-10",9456657861,31500.00),
+("6","Yokesh","2024-06-10",9433657861,32000.70),
+("7","Karan","2024-07-10",9411657861,32500.80),
+("8","Shamy","2024-08-10",9477657861,28000.0),
+("9","Fuzail","2024-09-10",9499657861,29990.80),
+("10","Logan","2024-10-10",9488654661,30050.00);   

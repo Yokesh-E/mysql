@@ -1,0 +1,69 @@
+# This is command syntax
+
+/* Opertaor
+Arithmetic
+Comparsion
+Logical    - AND,OR,NOT 
+Assignment
+pattern    - wildcard(-),Like(%)
+Between    
+Null       - is, is not
+Membership - in,not in */
+
+# Arthimatic
+
+select 12+12;
+select 12-14;
+select 12*2;
+select 3/12;
+
+
+#  Comparsion operation WHERE is used to filtering
+
+# Equal
+select * from employee where salary=30000.00;
+
+# Not Equal used command words != or <>
+select * from employee where salary<>30000.00;
+
+# Greater than
+select * from employee where salary>30000.00;
+
+# Lesser than
+select * from employee where salary<31000.00;
+
+# Lesser than equal
+select * from employee where salary<=30000.00;
+
+# Greater than equal
+select * from employee where salary>=29000.00;
+
+# Assignment Opertor
+
+update employee set salary =salary +1000;
+select * from employee; 
+
+
+# logical operator
+
+select * from employee where salary between 31000.00 and 31500.00;
+select * from employee where emp_name="Taha" and salary="36000"; 
+select * from employee;
+select * from employee where emp_name between "t" AND "z";	# use a acsii key method
+
+# pattern operator: wild(__),like(%)
+
+select * from employee where emp_name like "%t";
+select * from employee where emp_name like "t%";
+select * from employee where emp_name like "%u%";
+select * from employee where emp_name like "____veel";
+
+# Null opertor:
+
+select * from employee where salary is null;
+select * from employee where salary is not null;
+
+# Membership operators:
+
+Select * from employee where emp_name not in("Taha","Tahaveel");
+Select * from employee where emp_name in("Taha","Tahaveel");
