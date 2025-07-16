@@ -1,0 +1,20 @@
+# JOINS 
+# Joins -- joins is used to combine those from two or more tables based on a related column between them.
+# Types of Joins
+# INNER JOIN -- inner joins returns out the rows with matching values in both tables based on a specified condition if there is no match the row is not incluced in the result set.
+# LEFT JOIN -- 
+# RIGTH JOIN - 
+# FULL JOIN --
+# SELF JOIN --
+-- inner join
+select student2.id, student2.stu_name,department2.department from department2 inner join student2
+on department2.dept_id=student2.dept_id;
+-- right join
+select student2.id, student2.stu_name,department2.department from student2 right join department2
+on department2.dept_id=student2.dept_id;
+-- left join
+select student2.id, student2.stu_name,department2.department from student2 left join department2
+on department2.dept_id=student2.dept_id;
+-- full join
+select * from department2 left join student2 on department2.dept_id=student2.dept_id union select * from
+department2 right join student2 on department2.dept_id=student2.dept_id;

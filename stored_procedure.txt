@@ -1,0 +1,122 @@
+-- stored procedure-- a is a group of sql statement that are saved in  database with a name and can be executed when ever needed.it 
+-- allows reusing sql code efficiently and accepts parameter like in ,out ,in out.
+
+
+delimiter //
+create procedure save_emp()
+begin
+select * from employee.employee;
+end //
+delimiter ;
+call save_emp() ;
+
+
+delimiter //
+create procedure save_emp()
+begin
+declare total_emp int default 0;
+select count( * )
+into total_emp
+from employee.employee ;
+select total_emp;
+end //
+delimiter ;
+call save_emp() ;
+drop procedure save_emp;
+select * from employee2;
+
+-- switch case
+delimiter //
+create procedure switch_case( in marks int)
+begin
+     case
+         when marks>=35 and marks<=100 then
+             select "pass";
+	     when marks<35 and marks>=1 then
+             select "fail";
+		 else
+             select "invalid";
+	end case;
+end //
+delimiter ;
+call switch_case(34);
+
+create table student_marks(id int,name varchar(30),marks int);
+insert into student_marks values(1,"yokz",90),(2,"karan",11),(3,"ram",100),
+(4,"fuzhail",0),(5,"vellu",-100),(6,"sam",36),(7,"thaha",69),(8,"rohit",35);
+select * from student_marks;
+select name,marks,
+	case
+        when marks >=35 and marks<=100 then "pass"
+        else "fail"
+	end as result
+    from student_marks;
+
+delimiter //
+create procedure sql_loop()
+begin
+    declare i int;
+    declare str varchar(30);
+    set i=1;
+    set str="";
+    looplable:loop
+       if i>10 then
+         leave looplable;
+	   end if;
+       set str=concat(str," ",i);
+       set i=i+1;
+    end loop;
+    select str;
+end //
+delimiter ;
+call sql_loop();
+drop procedure sql_loop;
+
+delimiter //
+create procedure loop1(in marks int)
+begin
+case
+       when marks < 10 and marks >1 then
+          select "less 10";
+	   when marks >10 and marks <20 then
+          select "greater 20";
+	   else
+           select "another value";
+     end case;
+end //
+delimiter ;    
+call  loop1(44);
+drop procedure loop1;
+
+delimiter //
+create procedure fact(in val int)
+begin
+	   declare i int;
+       set i=1;
+	loop1:loop 
+       if val<1 then
+          leave loop1;
+       end if;
+	   set i=i*val;
+       set val=val-1;
+    end loop;
+    select i;
+end//
+delimiter ;
+call fact(5);
+
+delimiter //
+create procedure while_loop()
+begin
+   declare i int;
+   declare str varchar(39);
+   set i =1;
+   set str =" ";
+   while i<=10 do
+   set str=concat(str," ",i);
+   set i =i+1;
+   end while;
+   select str;
+end //
+delimiter ;
+call while_loop;

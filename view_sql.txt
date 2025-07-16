@@ -1,0 +1,11 @@
+-- views - is a virtual table
+-- the views is a virtual table in mysql that is based on the result often sql 
+-- query its doesnot store phisycaly but provides way to simplify complex querys by saving them as reuse objct.
+-- its acts like table but doesnot store  data itself.  
+
+select * from emp;
+create view emp1
+as
+select name,street from emp;
+select * from emp1;
+drop view emp1;

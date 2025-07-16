@@ -1,0 +1,84 @@
+/* Integrety constraints;
+* unique
+* NOT NULL'
+* Primary Key
+* Foregin key
+* check 
+* default
+* auto-increment */
+
+# UNIQUE -- unique constraits ensures that all values in a colummn or combination of column are different,It prevents duplicate values.
+
+create table uniq (id int unique,name varchar(20),Age int,Dept varchar(20));
+select * from uniq;
+insert into uniq(id,name,Age,Dept) values(1,"Tahavee",20,"IT");
+desc uniq;
+
+
+# NOT NUll --- not null ensures that a column do not have null values it must always have a value when inserting the data
+
+ create table uniq_t (id int not null,name varchar(20),Age int,Dept varchar(20));
+select * from uniq_t;
+insert into uniq_t(id,name,Age,Dept) values(1,"Tahavee",20,"IT");
+drop table uniq_t;
+desc uniq_t;
+
+# PRIMARY KEY --- primary key is a column or a combination od columns that uniquely identifies each row in a table it cannot have null values each table can have only one primary key.
+
+create table uniq_3 (id int primary key,name varchar(20),Age int,Dept varchar(20));
+select * from uniq_3;
+insert into uniq_3(id,name,Age,Dept) values(1,"Tahavee",20,"IT");
+desc uniq_3;
+
+# Check 
+# Check constraints is used to limit the value range that can be placed in a column if the value 
+-- violates the check constraints mysql will reject the data it ensures that data validity by enforcing conditions. 
+
+create table uniq_4(id int primary key,name varchar(20),experience int,check(experience >= 3));
+select * from uniq_4;
+insert into uniq_4(id,name,experience) values(1,"Tahaveel",4);
+drop table uniq_4;
+desc uniq_4;
+
+# Default 
+# Default integrity constraints is used to assign a default value to a column when no value is specified during insert it provides the pre-defined value if no data is entered for the column.
+
+create table uniq1(id int primary key,name varchar(20),Age int default 18);
+select * from uniq1;
+insert into uniq1(id,name) values(2,"Tahaveel");
+desc uniq1;
+
+# Auto-increment
+# Auto-increment is used to automatically generate a unique sequential number for a column whenever a new record is inserted it is commonly used for primary key columns by defualt it starts from 1 increment by 1 increment by 1 for each new row.
+
+ create table uniq6 (id int primary key auto_increment,name varchar(20),Age int,Dept varchar(20));
+select * from uniq6;
+insert into uniq6(name,Age,Dept) values("Tahavee",20,"IT");
+alter table uniq6 auto_increment = 10;
+desc uniq6;  
+
+#  Foreign key 
+# Foreign key is a column or combination of columns that creates the link between two tables it ensures referential integrity by enforcing that the value in the foreign key column that exists in the referenced primary key column of another table.
+# It is used to establish relationship between tables like(parent,child).
+# The foreign key column must refer to a primary key or unique key in another table.
+# SET NULL -- When the referenced record is deleted or update that child tables foreign column will be set to null automatically .
+# USE of SET NULL -- when we want keep that child but indicates that no longer as a va lid parent.
+# Cascade -- When a referenced record is deleted that child tables foreign column will be deleted automatically.
+# USE of CASCADE -- when we want the child records to automatically follow the parent action by deleting the foreign key.
+
+show tables;
+select * from department;
+select * from student1; 
+drop table student1;
+create table parent(id int primary key,dept varchar(20));
+create table student1(id int,stu_name varchar(50),dept varchar(20),foreign key(id) references parent(id)on delete set null); # set null and cascade
+insert into parent values(1,"cse"),(2,"mca"),(3,"mech");
+insert into student1 values(1,"ram","IT"),(2,"kumar","Admin"),(3,"balaji","IT");
+select * from parent;
+select * from student1;
+desc parent;
+
+delete from parent where id=1;
+drop table parent;
+drop table student1;
+insert into student values(4,"mohit","IT");

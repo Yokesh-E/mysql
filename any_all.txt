@@ -1,0 +1,25 @@
+# ANY and ALL operstors.
+# Any operators -- Any returns true if any one value in sub query satisty the condition.
+# All operators -- All retruns true if condition satisty for all value in the subquery.
+
+ create table Teacher(id int primary key,name varchar(30),age int);
+ create table students(id int primary key,name varchar(30),age int);
+ insert into Teacher values (1,'one',32),(2,"two",43),(3,"three",29),(4,"four",30),(5,"five",41);
+ insert into students values(101,"John",23),(102,"Ruban",42),(103,"Ajay",32),(104,"Balaji",24),(105,"Ravi",40);
+select * from Teacher;
+select * from students;
+select * from Teacher
+where age = any(select age from students); # This is subquery
+select * from Teacher
+where age < any(select age from students);
+select * from Teacher
+where age > any(select age from students);
+
+# ALL 
+
+select * from Teacher
+where age = all(select age from students);
+select * from Teacher
+where age < all(select age from students);
+select * from Teacher
+where age > all(select age from students);

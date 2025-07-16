@@ -1,0 +1,46 @@
+/* SET OPERTIONS
+* UNION
+* UNION ALL
+* INTERSECT */
+
+# UNION
+
+create table table_one(id int);
+create table table_two(id int);
+insert into table_one values(1),(2),(3),(4),(5);
+insert into table_two values(4),(3),(7),(8);
+select * from table_one;
+select * from table_two;
+drop table table_one;
+drop table table_two;
+select id as new from table_one
+union
+select id as two from table_two;
+
+# UNION ALL
+
+select id as new from table_one
+union all
+select id as two from table_two;
+
+# INTERSECT
+#  Intersect is not work in sql ,work in orcale
+# select id as new from table_one
+# intersect
+# select id as two from table_two;
+
+
+
+-- set operations
+
+create table table_one(id int);
+create table table_two(id int);
+insert into table_one values(1),(2),(3),(5);
+insert into table_two values(4),(3),(7),(8);
+select id from table_one union select id from table_two; -- 1,2,3,5,4,7,8
+select id from table_one union all select id from table_two; -- 1,2,3,5,4,3,7,8
+create table department2(department varchar(30),dept_id int);
+create table student2(id int,stu_name varchar(30),dept_id varchar(30));
+insert into department2 values("IT",1),("MECH",2),("ECE",3),("CSC",4);
+insert into student2 values(101,"muthu",1),(102,"yoks",2),(103,"karan",3),(104,"fuzhail",4),(105,"karan",5);
+select * from department2
